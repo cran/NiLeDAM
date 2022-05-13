@@ -1,0 +1,154 @@
+---
+title: "NiLeDAM"
+author: "Aurélie Mercadié,  Nathalie Vialaneix"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{NiLeDAM}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Preliminary steps
+
+```{r setup}
+library(NiLeDAM)
+```
+
+The package `NiLeDAM` will be tested on a data set called *srilanka*, provided by Anne-Magali Seydoux-Guillaume and published in Seydoux-Guillaume *et al.* (2012). For more information about this dataset, refer to the help page:
+
+```{r helpData, eval=FALSE}
+?srilanka
+```
+
+```{r load_data}
+data("srilanka")
+```
+
+```{r dimData}
+dim(srilanka)
+```
+
+```{r summaryData}
+summary(srilanka)
+```
+
+# Using all analyses
+
+## `calculateAges()`
+
+As a first step, ages are calculated with the help of the function `calculateAges()`. 
+
+```{r helpCalculate, eval=FALSE}
+?calculateAges
+```
+
+* **For a reliable estimation, one must fix the number of bootstrap samples** `nloops` **to at least 1000**. The larger the number of bootstraps, the more time-consuming the function gets.
+* The option `seed` is used to make results reproducible. Any integer can be used.
+* By default, `level = 0.05` (statistical risk for the tests) and `verbose = TRUE`.
+
+**Remark:** the data frame used in this function must have exactly 6 columns as the *srilanka* data set has (in that order). If not, then the function will generate an error.  
+
+```{r calculate}
+calculated.ages <- calculateAges(srilanka, nloops = 10, seed = 12, verbose = TRUE)
+```
+
+What contains this `ages` object ?
+
+* The estimated age for each sample
+```{r ages}
+calculated.ages@ages
+```
+
+* The age confidence interval for each sample
+
+```{r CI}
+calculated.ages@ci
+```
+
+## `tests()`
+
+Then, one can estimate the number of age populations using the previously generated object. This is done with the function `tests`, which help page is accessible with:
+
+```{r helpTests, eval=FALSE}
+?tests
+```
+
+One can either test a unique number or a sequence of numbers to find the most likely number of different populations of ages (or common ages). 
+
+Here, 1 to 3 populations are tested:
+
+```{r tests}
+res.tests <- tests(calculated.ages, nbmin = 1, nbmax = 3, verbose = TRUE)
+```
+
+It appears that the samples come from 2 different populations of ages.
+
+
+## Plotting methods
+
+Finally, the results can be visualized thanks to the following methods:
+
+* `plot` to plot the sample age densities as well as the common age densities
+* `popline` to plot samples with Th* (calculated from estimated ages and from U) on x-axis and with Pb on y-axis
+
+```{r plotTests, fig.height=5, fig.width=8}
+plot(res.tests)
+```
+
+```{r plotTests2, fig.height=5, fig.width=8}
+popline(res.tests)
+```
+
+# Removing the first 8 analyses (control group)
+
+```{r new_data}
+srilanka2 <- srilanka[-(1:8), ]
+```
+
+## `calculateAges()`
+
+```{r calculate2}
+calculated.ages <- calculateAges(srilanka2, nloops = 10, seed = 12)
+```
+
+## `tests()`
+
+```{r tests2}
+res.tests <- tests(calculated.ages, nbmax = 3)
+```
+
+This time, only one population is identified (as expected).
+
+## Plotting methods
+
+```{r plotTestsB, fig.height=5, fig.width=8}
+plot(res.tests)
+```
+
+```{r plotTests2B, fig.height=5, fig.width=8}
+popline(res.tests)
+```
+
+
+# Graphical user interface
+
+NiLeDAM also contains a shiny graphical interface that can be used to perform
+the actions described above. This interface in launched using:
+```{r niledamGUI, eval=FALSE}
+liveNiLeDAM()
+```
+
+
+# References
+
+Seydoux-Guillaume A.M., Montel J.M., Bingen B., Bosse V., de Parseval P., Paquette J.L., Janots E., Wirth R. (2012) Low-temperature alteration of monazite: fluid mediated coupled dissolution-precipitation, irradiation damage and disturbance of the U-Pb and Th-Pb chronometers. *Chemical Geology*, **330–331**, 140–158.

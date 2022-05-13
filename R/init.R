@@ -1,0 +1,15 @@
+.onAttach <- function(libname, pkgname){
+  packageStartupMessage("")
+  packageStartupMessage("***********************************************************")
+  packageStartupMessage("")
+  packageStartupMessage("      Welcome to the NiLeDAM package")
+  packageStartupMessage("      An online graphical interface is available at:")
+  packageStartupMessage("        http://shiny.nathalievilla.org/niledam")
+  packageStartupMessage("        or run: liveNILEDAM()")
+  packageStartupMessage("      Citation details with citation('NiLeDAM')")
+  packageStartupMessage("")
+  packageStartupMessage("      For questions/remarks, please contact the maintainer:")
+  packageStartupMessage("        nathalie.vialaneix@inrae.fr")
+  packageStartupMessage("")
+  packageStartupMessage("***********************************************************")
+}
