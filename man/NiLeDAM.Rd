@@ -18,16 +18,6 @@ analysis (EPMA). More precisely, the 'NiLeDAM' package has three main features:
    \item \strong{number of populations estimation} from the calculated ages, it estimates
    the most probable number of age populations from which the analyses come.
 }
-}
-\details{
-\tabular{ll}{
-Package: \tab NiLeDAM\cr
-Type: \tab Package\cr
-Version: \tab 0.1\cr
-Date: \tab 2022-05-09\cr
-License: \tab GPL-3\cr
-Repository: \tab R-Forge\cr
-}
 
 The package contains two main functions: \code{\link{calculateAges}()}, that 
 calculate the ages and \code{\link{tests}()}, that test for the number of age

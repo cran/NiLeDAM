@@ -92,8 +92,19 @@ shinyServer(function(input, output, session) {
       the.tests <- tests(the.ages, nbmin=input$nbmin, level=input$level/100,
                          verbose=FALSE)
     } else {
-		  the.tests <- tests(the.ages, nbmin=input$nbmin, nbmax=input$nbmax,
-                         level=input$level/100, verbose=FALSE)
+      the.tests <- tryCatch(tests(the.ages, nbmin = input$nbmin, 
+                                  nbmax = input$nbmax, level=input$level / 100, 
+                                  verbose = FALSE),
+                            error = function(c) {
+                              if (grepl("None of the population number is acceptable at level", geterrmessage())) {
+                                cat("None of the population number is found acceptable at level alpha = ", 
+                                    input$level, "%.\n", 
+                                    "From a statistical point of view, none of the tested population numbers between ", 
+                                    input$nbmin, " and ", input$nbmax, "is acceptable.")
+                              } else stop(c)
+                            }
+      )
+      
     }
 	})
   

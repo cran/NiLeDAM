@@ -31,59 +31,64 @@ shinyUI(fluidPage(
                   'Double Quote'),
       selectInput('dec', 'Decimal mark', c(Dot='.', Comma=','), 'Dot'),
       br(),
-      actionButton('reset', 'Effacer la sélection'),
+      actionButton('reset', 'Reset current settings'),
       br(), br(),
       h2("Age calculation"),
       helpText(HTML("<strong>Note</strong>: When your dataset is properly
-                   imported, go to the 'Ages' panel and choose the number of
-                   bootstrap samples as well as the risk for confidence intervals. 
-                   The calculation will run automatically. Table of results 
-                   will be displayed right below.
-                   <strong>You have to be patient</strong>, 
-                    the computation time can be large.")),
+                    imported, go to the &ldquo; Ages &rdquo; panel and choose
+                    the number of bootstrap samples as well as the risk for 
+                    confidence intervals. The calculation will be run 
+                    automatically. The table of results will be displayed right 
+                    below. <strong>You have to be patient</strong>: the 
+                    computation time can be large.")),
       h2("Tests"),
-      helpText(HTML("Once the ages are calculated, the 'Test' panel is used to 
-                  determine from which number of age population the analyses
-                  are coming.")),
+      helpText(HTML("Once the ages are calculated, the &ldquo; Test &rdquo; 
+                    panel is used to determine the number of age populations the
+                    data are likely to come from.")),
       br(),
       p(HTML("<div style='background-color:#79776F;border:0px solid black;color:white;'>
-		       This application is a graphical interface of the <a
-           href='http://niledam.r-forge.r-project.org/'>NiLeDAM</a> package
-           using the <a href='https://www.r-project.org/'>R</a> software
-           environment. If you have any trouble using it, please do not hesitate
-           to contact <a mailto:'nathalie.vialaneix[AT]inrae.fr'>Nathalie 
-           Vialaneix</a>, the package's maintainer.<br>
-           The application scripts are available on GitHub:<br> 
-           <code><font color='#870500'><b>git clone
-           https://github.com/tuxette/niledam.git</b></font></code><br>and
-           distributed <strong>without any guarantee</strong> under the licence
-           <a href='http://cran.r-project.org/web/licenses/GPL-3'>GPL-3</a>.
-           </div>")),
-      p(HTML("")),
-      p(HTML("<strong>If you are using the application for your publications,
-           please
-<a href='https://owncloud.nathalievilla.org/apps/files_sharing/get.php?token=2bd2782289949699ce4f8246dc2ef62363806cf2'>
-           cite us</a>.</strong>"))
+		         This application is a graphical interface of the 
+		         <a href='https://CRAN.R-project.org/package=NiLeDAM'>NiLeDAM</a> 
+		         package using the <a href='https://www.r-project.org/'>R</a> 
+		         software environment. If you have any trouble using it, please do 
+		         not hesitate to contact 
+		         <a mailto:'nathalie.vialaneix[AT]inrae.fr'>Nathalie Vialaneix</a>, 
+		         the package maintainer.<br>
+		         The application scripts are available at:<br>
+		         <code><font color='#870500'><b>
+		           git clone https://gitlab.nathalievialaneix.eu/nathalie/niledam
+		         </b></font></code><br>and distributed <strong>without any 
+		         guarantee</strong> under the 
+		         <a href='http://cran.r-project.org/web/licenses/GPL-3'>GPL-3</a>
+		         license.
+           </div>"))
     ),
     
     mainPanel(
       tabsetPanel(
         
-        tabPanel("Data",
-                 h3("Basic user guide"),
-                 p(HTML("To run the application, import your file with (U, Th, Pb)
-                      contents and corresponding errors. This file must be a
-                      text file having <strong>ONLY 6 columns</strong>: U, errU,
-                      Th, ErrTh, Pb, ErrPb, in this order (with eventually a
-                      first column containing the sample names). CSV format is
-                      the easiest to use: such an example is given <a 
-href='http://owncloud.nathalievilla.org/apps/files_sharing/get.php?token=51731049ed775fbe40746670171205596fff16f4'>
-                      here</a> that is imported with the default parameters
-                      specified on the left panel.<br>")),
-                 p("Once your file's URL is pasted, the data are imported and if
-                 the importation is done properly, the data are displayed on the
-                 main panel. Then, you can perform the age calculation and the
-                 tests by increasing the number of bootstrap samples."),
+        tabPanel("User guide - Data",
+                 h3("Import data files"),
+                 p(HTML("To run the application, import your file with 
+                        (U, Th, Pb) contents and corresponding errors. This 
+                        file must be a text file having 
+                        <strong>ONLY 6 columns</strong>: U, errU, Th, ErrTh, 
+                        Pb, ErrPb, <strong>in this order</strong> (with 
+                        eventually a first column containing the sample 
+                        names).<br>")),
+                 p("See an example of a classic data file below (with default
+                   importation settings):"),
+                 img(src = "DataFileFormatExample.png", height = '200px', width = '717px'),
+                 br(),br(),
+                 p(HTML("Once your file local path is specified in the &ldquo; 
+                        Browse &rdquo; field of the left panel, the data are 
+                        automatically uploaded. If the upload is done properly, 
+                        they are displayed in the &ldquo; Data &rdquo; tab. 
+                        Then, age calculations can be performed in the &ldquo; 
+                        Ages &rdquo; tab and tests for the estimation of the
+                        population number are also available in the &ldquo; 
+                        Tests &rdquo; tab.")),
+                 br(),br(),
                  h3("The dataset you want to use is displayed below:"),
                  h5("(only the first 50 first lines if the dataset contains more than 50 lines)"),
                  tableOutput("view")
@@ -92,40 +97,46 @@ href='http://owncloud.nathalievilla.org/apps/files_sharing/get.php?token=5173104
         tabPanel("Ages",
                  br(),
                  numericInput("boot", "Number of bootstrap samples (advised:
-                            1000):", 1000, width = '450px'),
+                              1000):", 1000, width = '450px'),
                  numericInput("risk","Risk (%) for the confidence interval
-                            (advised: 5%):", 5, width = '450px'),
+                              (advised: 5%):", 5, width = '450px'),
                  numericInput("seed",
                               HTML("Set a random seed for reproducible results
-                                 <a href='#pseudor'><sup>(1)</sup></a>:"),
+                                   <a href='#pseudor'><sup>(1)</sup></a>:"),
                               as.numeric(format(Sys.time(), "%M%S")), width = '450px'),  
                  br(),br(),
+                 p(HTML("If your dataset has been properly imported, wait a few
+                        minutes to get the results of the age estimations. The
+                        estimations are displayed below when available and can
+                        be dowloaded.")),
+                 br(),
                  downloadButton('downloadAges', 'Download Ages'),br(),br(),
                  tableOutput("ages"),
                  p(HTML("<a name='pseudor'><sup>(1)</sup></a> The age estimation
-                      is based on Monte Carlo method that uses randomness.
-                      Setting a seed results in fixing the random procedure in
-                      order to obtain reproducible results (runing several times
-                      the process with the same random seed will give the same
-                      ages). More information on pseudo-random generators at <a
-href='http://en.wikipedia.org/wiki/Pseudorandom_number_generator'
-                     >this link</a>."))),
+                        is based on a Monte Carlo method that uses randomness.
+                        Setting a seed results in fixing the random procedure in
+                        order to obtain reproducible results (runing several
+                        times the process with the same random seed will give 
+                        the same results). More information on pseudo-random 
+                        generators at 
+                        <a href='http://en.wikipedia.org/wiki/Pseudorandom_number_generator'>this link</a>."))),
         
         tabPanel("Tests",
                  br(),
-                 helpText(HTML("Either supply 'nbmin' and 'nbmax' to find the
-                             most probable age population number or set 'nbmax'
-                             to 0 to perform a test for 'nbmin' age 
-                             populations.")),
-                 numericInput("nbmin", "Minimal number of populations tested:",1),
-                 numericInput("nbmax","Maximal number of populations tested",0),
+                 helpText(HTML("Either supply <code>nbmin</code> and 
+                               <code>nbmax</code> to find the most probable age 
+                               population number or set <code>nbmax</code>
+                               to 0 to perform a test for <code>nbmin</code> age 
+                               populations.")),
+                 numericInput("nbmin", "Minimal number of populations tested:", 1),
+                 numericInput("nbmax","Maximal number of populations tested", 0),
                  numericInput("level","Risk (%) for the confidence interval
-                            (advised: 5%):", 5),
+                              (advised: 5%):", 5),
                  verbatimTextOutput("testres"),
                  downloadButton('downloadPops', 'Download population numbers'),
                  br(),br(),tableOutput("whichpop")),
         
-        tabPanel("Graphics",
+        tabPanel("Plots",
                  br(),
                  h3("Densities"),
                  fluidRow(
