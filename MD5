@@ -1,6 +1,6 @@
-a1f794baa97138dabc59693e3dc26893 *DESCRIPTION
+a1aa374b7d221bbd2a2712287ca26e5a *DESCRIPTION
 09c1db6365827944a5ea5e867148daba *NAMESPACE
-3cee4f85f685d59128473206d8168c5b *NEWS.md
+1487a458366aa9c7612b44cb4af488b9 *NEWS.md
 ddd37bfe51947f6d0ab8ced123b6167f *R/ageTests.R
 dd94fe993a8efb286c283b492fa5963c *R/ages-oneAgeTest-ageTests.R
 d0fc2a3e60568b893a50b252ef6934a8 *R/ages.R
@@ -11,15 +11,15 @@ c03f7ff640925f935c0e8ebe5774764e *R/describeNiLeDAM.R
 c9563027aa4f14c0c41bd22849f86960 *R/liveNILEDAM.R
 b580ac676b0f9ba40eb98dd9fa9117aa *R/oneAgeTest.R
 adac62ca2c3cfddfac155456707c5a9e *R/tests.R
-b24f57a73bbe9a8275d727cd82c8effa *build/vignette.rds
+6c66d22ea042e0083339f87f1e289e09 *build/vignette.rds
 b07dac03e9043e129203959126db8653 *data/srilanka.rda
 695da853e43afef030fcb58fbbb539cc *demo/00Index
 f610c3330ee61ee95c1a5dc02563b1e4 *demo/srilanka.R
 483aa846f4b2522dbebce25d561233b5 *inst/CITATION
 888000cdae44404f6c190d9240a47b0f *inst/WORDLIST
-3dd7ac27f133eacb01218dade2e9f08b *inst/doc/NiLeDAM.R
+785fa35e48486bc4813e00002f1ea007 *inst/doc/NiLeDAM.R
 e371d3f51cf898b58414612755045aef *inst/doc/NiLeDAM.Rmd
-1a890958ab929ac5658374b5fa1c5c03 *inst/doc/NiLeDAM.html
+5215bb30b36932188a27143f5c0a00ef *inst/doc/NiLeDAM.html
 cf540fc7d35b5777e36051280b3a911c *inst/shiny/LICENCE
 df7ae78cb0e8477580040ff5af3122d0 *inst/shiny/global.R
 e4ecce4d3911db942e3e5d9dbf3e8be8 *inst/shiny/rsconnect/shinyapps.io/tuxette/NiLeDAM.dcf
@@ -42,7 +42,7 @@ c34928f32f35aa7d642bcd18ebbd3902 *man/tests-methods.Rd
 183153ccd1592eeae525f737fe0bbcde *tests/testthat.R
 37975ebe100019b531be2f54d109b38e *tests/testthat/test-calculate-ages.R
 262ed23cc1f26d246de84d7be01c8a2b *tests/testthat/test-other-methods.R
-ede141dc719bcbda3ac2835a544c3d16 *tests/testthat/test-plot.R
-7ab704632436c9e14adf25bafa2b74ce *tests/testthat/test-popline.R
+cd23cfbcd1bbe484f1fcecdf2268a5f3 *tests/testthat/test-plot.R
+277949d041ea7dda3acf2a1d0ed65a72 *tests/testthat/test-popline.R
 74d5168b0732ff4034b95c7f6b471d8c *tests/testthat/test-tests.R
 e371d3f51cf898b58414612755045aef *vignettes/NiLeDAM.Rmd

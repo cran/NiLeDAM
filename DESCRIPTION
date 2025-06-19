@@ -1,12 +1,16 @@
 Package: NiLeDAM
 Title: Monazite Dating for the NiLeDAM Team
-Version: 0.3
-Date: 2023-09-17
+Version: 0.4
+Date: 2025-06-19
 Authors@R: c(
-    person("Nathalie", "Vialaneix", , "nathalie.vialaneix@inrae.fr", role = c("aut", "trl", "cre")),
+    person("Nathalie", "Vialaneix", , "nathalie.vialaneix@inrae.fr", 
+           role = c("aut", "trl", "cre"), 
+           comment = c(ORCID = "0000-0003-1156-0639")),
     person("Aurélie", "Mercadié", , "aurelie.mercadie@inrae.fr", role = "aut"),
-    person("Jean-Marc", "Montel", , "jean-marc.montel@ensg.inpl-nancy.fr", role = "aut"),
-    person("Anne-Magali", "Seydoux-Guillaume", , "anne.magali.seydoux@univ-st-etienne.fr", role = "ctb")
+    person("Jean-Marc", "Montel", , "jean-marc.montel@ensg.inpl-nancy.fr", 
+           role = "aut"),
+    person("Anne-Magali", "Seydoux-Guillaume", , 
+           "anne.magali.seydoux@univ-st-etienne.fr", role = "ctb")
   )
 Maintainer: Nathalie Vialaneix <nathalie.vialaneix@inrae.fr>
 Description: Th-U-Pb electron microprobe age dating of monazite, as originally 
@@ -26,9 +30,10 @@ Collate: 'init.R' 'describeNiLeDAM.R' 'describeSrilanka.R' 'ages.R'
         'ages-oneAgeTest-ageTests.R' 'liveNILEDAM.R'
 Language: en-US
 NeedsCompilation: no
-Packaged: 2023-09-18 05:41:52 UTC; nathalie
-Author: Nathalie Vialaneix [aut, trl, cre],
+Packaged: 2025-06-19 13:49:08 UTC; nathalie
+Author: Nathalie Vialaneix [aut, trl, cre] (ORCID:
+    <https://orcid.org/0000-0003-1156-0639>),
   Aurélie Mercadié [aut],
   Jean-Marc Montel [aut],
   Anne-Magali Seydoux-Guillaume [ctb]
-Date/Publication: 2023-09-18 06:00:02 UTC
+Date/Publication: 2025-06-19 14:00:02 UTC

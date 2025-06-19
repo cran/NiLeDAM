@@ -6,8 +6,7 @@ test_that("test result on 'oneAgeTest' plotted correctly", {
   p <- plot(res.test)
   
   # Test
-  expect_equal(class(p), c("gg","ggplot"))
-  expect_equal(typeof(p), "list")
+  expect_true(is_ggplot(p))
 })
 
 test_that("test result on 'ageTests' plotted correctly", {
@@ -18,6 +17,5 @@ test_that("test result on 'ageTests' plotted correctly", {
   p <- plot(res.test)
   
   # Test
-  expect_equal(class(p), c("gg","ggplot"))
-  expect_equal(typeof(p), "list")
+  expect_true(is_ggplot(p))
 })

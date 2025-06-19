@@ -1,6 +1,10 @@
+# NiLeDAM 0.4
+
+* Fixed tests related to ggplot2
+
 # NiLeDAM 0.3
 
-* Remove uncessary details on a package that were in a static table (as 
+* Remove unnecessary details on a package that were in a static table (as 
 suggested by CRAN)
 * Fixed the format of some files (including NEWS)
 

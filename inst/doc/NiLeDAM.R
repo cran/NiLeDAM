@@ -1,4 +1,4 @@
-## ---- include=FALSE-----------------------------------------------------------
+## ----include=FALSE------------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -8,7 +8,7 @@ knitr::opts_chunk$set(
 library(NiLeDAM)
 
 ## ----helpData, eval=FALSE-----------------------------------------------------
-#  ?srilanka
+# ?srilanka
 
 ## ----load_data----------------------------------------------------------------
 data("srilanka")
@@ -20,7 +20,7 @@ dim(srilanka)
 summary(srilanka)
 
 ## ----helpCalculate, eval=FALSE------------------------------------------------
-#  ?calculateAges
+# ?calculateAges
 
 ## ----calculate----------------------------------------------------------------
 calculated.ages <- calculateAges(srilanka, nloops = 10, seed = 12, verbose = TRUE)
@@ -32,7 +32,7 @@ calculated.ages@ages
 calculated.ages@ci
 
 ## ----helpTests, eval=FALSE----------------------------------------------------
-#  ?tests
+# ?tests
 
 ## ----tests--------------------------------------------------------------------
 res.tests <- tests(calculated.ages, nbmin = 1, nbmax = 3, verbose = TRUE)
@@ -59,5 +59,5 @@ plot(res.tests)
 popline(res.tests)
 
 ## ----niledamGUI, eval=FALSE---------------------------------------------------
-#  liveNiLeDAM()
+# liveNiLeDAM()
 
